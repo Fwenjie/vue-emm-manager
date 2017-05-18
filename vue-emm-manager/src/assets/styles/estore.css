@@ -1,0 +1,58 @@
+* {
+  /*font-size: 12px;*/
+  font-family: Microsoft Yahei, 'Avenir', Helvetica, Arial, sans-serif;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*rewrite*/
+
+/*子菜单字体颜色修改*/
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item {
+  color: #C0C1C4;
+}
+
+/*子菜单hover样式修改*/
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item:hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title:hover {
+  color: #fff;
+  background: #22222C;
+}
+
+/*子菜单hover i 样式修改*/
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item:hover i {
+  color: #57975B;
+}
+
+/* 子菜单选中样式修改  */
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) {
+  color: #ffffff;
+  background-color: #57B382;
+}
+/* 子菜单选中样式时，hover事件修改  */
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu):hover {
+  background-color: #57B382;
+  color: #ffffff;
+}
+/* 子菜单选中样式时，hover事件 i样式修改  */
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) i, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):hover i, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) i, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu):hover i{
+  color: #ffffff;
+}
