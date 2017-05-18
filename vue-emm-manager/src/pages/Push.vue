@@ -1,181 +1,160 @@
 <template>
-  <div class="layout" >
-      <div class="layout-menu-left" >
-        <Menu active-name="1" theme="dark" width="auto">
-          <div class="layout-logo-left">
-            EMM后台管理系统
-          </div>
-          <Menu-item name="1">
-            <Icon type="ios-navigate" :size="iconSize"></Icon>
-            <span class="layout-text">用户管理</span>
-          </Menu-item>
-          <Menu-item name="2">
-            <Icon type="ios-keypad" :size="iconSize"></Icon>
-            <span class="layout-text">设备管理</span>
-          </Menu-item>
-          <Menu-item name="3">
-            <Icon type="ios-analytics" :size="iconSize"></Icon>
-            <span class="layout-text">应用管理</span>
-          </Menu-item>
-        </Menu>
-      </div>
-      <div style="overflow-y: scroll" :style="{'width': rightMaxWidth}" >
-        <!--<div class="layout-header">-->
-        <!--</div>-->
-        <div class="layout-section">
-          <div class="layout-breadcrumb">
-            <Breadcrumb>
-              <Breadcrumb-item href="#">首页</Breadcrumb-item>
-              <Breadcrumb-item href="#">应用中心</Breadcrumb-item>
-              <Breadcrumb-item>某应用</Breadcrumb-item>
-            </Breadcrumb>
-          </div>
-          <div class="layout-content">
-            <div class="layout-content-main">内容区域<br>
+  <div class="layout-content">
+    <div class="label">消息推送</div>
+
+    <div class="layout-content-head"></div>
+    <div>
+      <ul class="nav nav-tabs tablist-background" role="tablist">
+        <li role="presentation " :class="{'active' : true} " class="tablist-selection-all"
+        ><a href="javascript:void(0);"
+            @click="messageFunction(1,1,-1)">全部</a>
+        </li>
+        <li role="presentation" :class="{'active' : true}"
+            class="tablist-selection"><a
+          href="javascript:void(0);"
+          @click="messageFunction(1,1,1)">已发布</a></li>
+        <li role="presentation" :class="{'active' : true }"
+            class="tablist-selection"><a
+          href="javascript:void(0);"
+          @click="messageFunction(1,1,0)">未发布</a></li>
+      </ul>
+    </div>
+    <div class="background-color-white device-list-head">
+      <div class=" ">
+        <div class="col-lg-8 col-xs-8">
+          <input class="form-control col-lg-2  col-xs-2 developer-input"
+                 placeholder="输入标题查询">
+          <button type="button" @click="messageFunction(1,2,'')"
+                  class="btn col-lg-5 col-xs-5 btn-white btn-device-submit margin-left-thirteen">
+            查询
 
 
-              内容区域<br>
-              内容区域<br>内容区域<br>
-              内容区域<br>
-              内容区域<br>
-              内容区域<br>
-              内容区域<br>
-              内容区域<br>内容区域<br>内容区域<br>
-              内容区域<br>
-              内容区域<br>
-              内容区域<br>内容区域<br>
-              内容区域<br>
-              内容区域<br>
-              内容区域<br>
-              内容区域<br>内容区域<br>
-              内容区域<br>
-              内容区域<br>内容区域<br>
-              内容区域<br>内容区域<br>
-              内容区域<br>
-              内容区域<br>
-              内容区域<br>内容区域<br>内容区域<br>内容区域<br>
+
+          </button>
+          <a href="javascript:void (0)"
+             class="btn btn-white  margin-left-thirteen width-twenty-percentage col-lg-2 col-xs-2"
+             @click="changeShowModal('',$event,'message','')">添加新消息</a>
+        </div>
+        <div class="dataTables_paginate paging_bootstrap pagination  margin-right-thirteen"
+             style="margin-top: -15px;">
+          <ul>
+            <ul class="fl padding-top-seven ">共个</ul>
+            <li v-if="20 > 1"
+                class="prev background-color-white margin-left-seven">
+              <a class="btn btn-next-disable btn-forbidden next-page-left" href="javascript:void(0);"
+                 @click="nextPage(1,'message')"
+              ><
+                        </a>
+              <button class="btn btn-next-enable next-page-left"
+                      href="javascript:void(0);"
+                      @click="nextPage(1,'message')"
+              ><
 
 
-            </div>
-          </div>
-          <div class="layout-copy">
-            2011-2016 &copy; TalkingData
 
-          </div>
+              </button>
+            </li>
+            <li v-if="20 > 1"
+                class="next background-color-white margin-left-seven">
+              <a
+                class="btn btn-next-disable btn-forbidden next-page-left" href="javascript:void(0);"
+                @click="nextPage(1,'message')"
+              >>
+                        </a>
+              <button class="btn btn-next-enable next-page-left"
+                      href="javascript:void(0);"
+                      @click="nextPage(1,'message')"
+              >>
+
+
+
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
+    </div>
+    <div class="panel panel-default no-border applet-section-margin-top">
+      <div class=" panel-body no-border">
+        <table class="table table-bordered background-color-white  table-hover">
+          <tr class="table-head">
+            <td class="width-sixteen-percentage ">标题</td>
+            <td class="width-sixteen-percentage ">时间</td>
+            <td class="width-sixteen-percentage ">状态</td>
+            <td class="width-sixteen-percentage ">操作</td>
+          </tr>
+          <tr v-cloak>
+            <td class=""><a href="#" @click="messageFunction(8,item,'')"></a></td>
+            <td class=""></td>
+            <td class="state-enable"><span class="fa fa-circle "></span>已发布
+
+
+
+            </td>
+            <td class="state-disable"><span class="fa fa-circle "></span>未发布
+
+
+
+            </td>
+            <td><a href="javascript:void(0);"
+                   @click="changeShowModal(item,$event,'message','')">删除</a>
+            </td>
+            <td>
+              <a href="javascript:void(0);"
+                 @click="changeShowModal(item,$event,'message','')">编辑</a>
+              <a href="javascript:void(0);" class="margin-left-thirteen"
+                 @click="changeShowModal(item,$event,'message','')">发布</a>
+              <a href="javascript:void(0);" class="margin-left-thirteen"
+                 @click="changeShowModal(item,$event,'message','')">删除</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'name',
+    name: 'push',
     data () {
       return {
-        msg: '提示',
-        spanLeft: 4,
-        spanRight: 20,
-        rightWidth: 0
+        msg: '提示'
       }
     },
-    computed: {
-      iconSize () {
-        return this.spanLeft === 5 ? 14 : 24
-      },
-      rightMaxWidth () {
-        var width = window.innerWidth
-        this.rightWidth = (width - 180) + 'px'
-        return this.rightWidth
-      }
-    },
+    computed: {},
     components: {},
-    methods: {
-      toggleClick () {
-        if (this.spanLeft === 5) {
-          this.spanLeft = 2
-          this.spanRight = 22
-        } else {
-          this.spanLeft = 5
-          this.spanRight = 19
-        }
-      }
-    }
+    methods: {}
   }
 </script>
 
 <style>
-  /*!*.layout {*!*/
-    /*!*border: 1px solid #d7dde4;*!*/
-    /*!*background: #f5f7f9;*!*/
-    /*!*position: relative;*!*/
-    /*!*border-radius: 4px;*!*/
-    /*!*overflow: hidden;*!*/
-    /*!*height: inherit;*!*/
-    /*!*width: inherit;*!*/
-  /*!*}*!*/
+  .layout-content {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow-y: scroll;
+    padding: 15px 20px;
+  }
 
-  /*.layout-section {*/
-    /*margin-left: 180px;*/
-    /*!*margin-top: 60px;*!*/
-  /*}*/
+  .layout-content-head {
+    margin-top: 20px;
+    height: 30px;
+    background-color: #E4EAEC;
+    border-radius: 3px 3px 0 0;
+  }
 
-  /*.layout-breadcrumb {*/
-    /*padding: 10px 15px 0;*/
-  /*}*/
-
-  /*.layout-content {*/
-    /*!*min-height: 200px;*!*/
-    /*margin: 15px;*/
-    /*!*overflow: hidden;*!*/
-    /*background: #fff;*/
-    /*border-radius: 4px;*/
-
-  /*}*/
-
-  /*.layout-content-main {*/
-    /*padding: 10px;*/
-  /*}*/
-
-  /*.layout-copy {*/
-    /*text-align: center;*/
-    /*padding: 10px 0 20px;*/
-    /*color: #9ea7b4;*/
-  /*}*/
-
-  /*.layout-menu-left {*/
-    /*background: #464c5b;*/
-    /*max-width: 180px;*/
-  /*}*/
-
-  /*.layout-header {*/
-    /*!*position: absolute;*!*/
-    /*!*top: 0px;*!*/
-    /*height: 60px;*/
-    /*background: #fff;*/
-    /*box-shadow: 0 1px 1px rgba(0, 0, 0, .1);*/
-    /*!*filter:alpha(opacity=50);*!*/
-    /*!*-moz-opacity:0.5;*!*/
-    /*!*-khtml-opacity: 0.5;*!*/
-    /*!*opacity: 0.5;*!*/
-  /*}*/
-
-  /*.layout-logo-left {*/
-    /*width: 90%;*/
-    /*height: 30px;*/
-    /*!*background: #ffffff;*!*/
-    /*!*border-radius: 3px;*!*/
-    /*margin: 15px auto;*/
-  /*}*/
-
-  /*.layout-ceiling-main a {*/
-    /*color: #9ba7b5;*/
-  /*}*/
-
-  /*.layout-hide-text .layout-text {*/
-    /*display: none;*/
-  /*}*/
-
-  /*.ivu-col {*/
-    /*transition: width .2s ease-in-out;*/
-  /*}*/
+  .label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    background-color: #FF615A;
+  }
 </style>

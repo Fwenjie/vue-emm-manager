@@ -77,13 +77,14 @@
     height: 100%;
     width: 180px;
     background-color: #22222C;
-    position: relative;
+    position: fixed;
     overflow: hidden;
   }
 
   .layout-left-menu {
     padding-top: 27px;
     overflow-y: scroll;
+    overflow-x: hidden;
     position: absolute;
     right: -17px;
     font-size: 14px;

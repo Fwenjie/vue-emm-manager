@@ -2,6 +2,7 @@
   <div class="layout">
     <layout-left></layout-left>
     <layout-header></layout-header>
+    <router-view></router-view>
   </div>
 </template>
 
