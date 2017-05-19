@@ -1,40 +1,20 @@
 <template>
   <div class="layout-content">
-    <div class="label">消息推送</div>
-
+    <div class="label label-danger">消息推送</div>
     <div class="layout-content-head"></div>
     <div>
-      <ul class="nav nav-tabs tablist-background" role="tablist">
-        <li role="presentation " :class="{'active' : true} " class="tablist-selection-all"
-        ><a href="javascript:void(0);"
-            @click="messageFunction(1,1,-1)">全部</a>
-        </li>
-        <li role="presentation" :class="{'active' : true}"
-            class="tablist-selection"><a
-          href="javascript:void(0);"
-          @click="messageFunction(1,1,1)">已发布</a></li>
-        <li role="presentation" :class="{'active' : true }"
-            class="tablist-selection"><a
-          href="javascript:void(0);"
-          @click="messageFunction(1,1,0)">未发布</a></li>
-      </ul>
+      <tab-list :tabList="tabs"></tab-list>
     </div>
-    <div class="background-color-white device-list-head">
-      <div class=" ">
-        <div class="col-lg-8 col-xs-8">
+    <div class="layout-content-main">
           <input class="form-control col-lg-2  col-xs-2 developer-input"
                  placeholder="输入标题查询">
           <button type="button" @click="messageFunction(1,2,'')"
                   class="btn col-lg-5 col-xs-5 btn-white btn-device-submit margin-left-thirteen">
             查询
-
-
-
           </button>
           <a href="javascript:void (0)"
              class="btn btn-white  margin-left-thirteen width-twenty-percentage col-lg-2 col-xs-2"
              @click="changeShowModal('',$event,'message','')">添加新消息</a>
-        </div>
         <div class="dataTables_paginate paging_bootstrap pagination  margin-right-thirteen"
              style="margin-top: -15px;">
           <ul>
@@ -72,59 +52,79 @@
             </li>
           </ul>
         </div>
-      </div>
-    </div>
-    <div class="panel panel-default no-border applet-section-margin-top">
-      <div class=" panel-body no-border">
-        <table class="table table-bordered background-color-white  table-hover">
-          <tr class="table-head">
-            <td class="width-sixteen-percentage ">标题</td>
-            <td class="width-sixteen-percentage ">时间</td>
-            <td class="width-sixteen-percentage ">状态</td>
-            <td class="width-sixteen-percentage ">操作</td>
-          </tr>
-          <tr v-cloak>
-            <td class=""><a href="#" @click="messageFunction(8,item,'')"></a></td>
-            <td class=""></td>
-            <td class="state-enable"><span class="fa fa-circle "></span>已发布
+      <div class="panel panel-default no-border applet-section-margin-top">
+        <div class=" panel-body no-border">
+          <table class="table table-bordered background-color-white  table-hover">
+            <tr class="table-head">
+              <td class="width-sixteen-percentage ">标题</td>
+              <td class="width-sixteen-percentage ">时间</td>
+              <td class="width-sixteen-percentage ">状态</td>
+              <td class="width-sixteen-percentage ">操作</td>
+            </tr>
+            <tr v-cloak>
+              <td class=""><a href="#" @click="messageFunction(8,item,'')"></a></td>
+              <td class=""></td>
+              <td class="state-enable"><span class="fa fa-circle "></span>已发布
 
 
 
             </td>
-            <td class="state-disable"><span class="fa fa-circle "></span>未发布
+              <td class="state-disable"><span class="fa fa-circle "></span>未发布
 
 
 
             </td>
-            <td><a href="javascript:void(0);"
+              <td><a href="javascript:void(0);"
+                     @click="changeShowModal(item,$event,'message','')">删除</a>
+              </td>
+              <td>
+                <a href="javascript:void(0);"
+                   @click="changeShowModal(item,$event,'message','')">编辑</a>
+                <a href="javascript:void(0);" class="margin-left-thirteen"
+                   @click="changeShowModal(item,$event,'message','')">发布</a>
+                <a href="javascript:void(0);" class="margin-left-thirteen"
                    @click="changeShowModal(item,$event,'message','')">删除</a>
-            </td>
-            <td>
-              <a href="javascript:void(0);"
-                 @click="changeShowModal(item,$event,'message','')">编辑</a>
-              <a href="javascript:void(0);" class="margin-left-thirteen"
-                 @click="changeShowModal(item,$event,'message','')">发布</a>
-              <a href="javascript:void(0);" class="margin-left-thirteen"
-                 @click="changeShowModal(item,$event,'message','')">删除</a>
-            </td>
-          </tr>
-        </table>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
+    <div class="layout-content-footer"></div>
   </div>
 </template>
 
 <script>
+  import TabList from '../components/tab/TabList.vue'
   export default {
     name: 'push',
     data () {
       return {
-        msg: '提示'
+        msg: '提示',
+        tabs: ['全部', 'Android', 'IOS']
       }
     },
     computed: {},
-    components: {},
-    methods: {}
+    components: {
+      TabList
+    },
+    methods: {
+      aaa (ev) {
+        console.log(ev.currentTarget)
+        var n = 0
+        var id = setInterval(() => {
+          n++
+        }, 500)
+        ev.currentTarget.addEventListener('mouseup', () => {
+          clearInterval(id)
+          if (n < 10) {
+            console.log('你应该跳转')
+          } else {
+            console.log('看你怎么拖动了')
+          }
+        })
+      }
+    }
   }
 </script>
 
@@ -144,6 +144,18 @@
     border-radius: 3px 3px 0 0;
   }
 
+  .layout-content-main {
+    min-height: 600px;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+
+  .layout-content-footer {
+    height: 80px;
+  }
+
   .label {
     display: inline;
     padding: .2em .6em .3em;
@@ -155,6 +167,10 @@
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: .25em;
+
+  }
+
+  .label-danger {
     background-color: #FF615A;
   }
 </style>
