@@ -5,10 +5,10 @@
     </div>
     <Menu active-name="1" theme="dark" width="auto" style="width: 217px" class="layout-left-menu"
           :style="{'height': contentHeight}">
-      <Menu-item name="user" class="layout-left-menu-item" style="padding-left: 41px">
+     <a href="http://www.baidu.com"> <Menu-item  name="user" class="layout-left-menu-item" style="padding-left: 41px" >
         <Icon type="ios-people" :size="iconSize"></Icon>
         <span class="layout-text">用户管理</span>
-      </Menu-item>
+     </Menu-item></a>
       <Menu-item name="device" class="layout-left-menu-item" style="padding-left: 41px">
         <Icon type="ipad" :size="iconSize"></Icon>
         <span class="layout-text">设备管理</span>
@@ -71,6 +71,12 @@
       },
       contentHeight () {
         return (window.innerHeight - 48) + 'px'
+      }
+    },
+    methods: {
+      'on-select' (name) {
+        console.log(name)
+//        window.location.href = url
       }
     }
 
