@@ -49,12 +49,111 @@ body {
   color: #ffffff;
   background-color: #57B382;
 }
+
 /* 子菜单选中样式时，hover事件修改  */
 .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):hover, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu), .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu):hover {
   background-color: #57B382;
   color: #ffffff;
 }
+
 /* 子菜单选中样式时，hover事件 i样式修改  */
-.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) i, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):hover i, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) i, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu):hover i{
+.ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) i, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):hover i, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu) i, .ivu-menu-dark.ivu-menu-vertical .ivu-menu-submenu-title-active:not(.ivu-menu-submenu):hover i {
   color: #ffffff;
 }
+
+/*input 样式修改*/
+.ivu-input {
+  font-size: 12px;
+  border: solid 2px #CBCBD9;
+  border-radius: 3px;
+  padding-left: 10px;
+}
+
+.ivu-input:hover {
+  border: solid 2px #56B383;
+  border-radius: 3px;
+  box-shadow: none !important;
+}
+
+.ivu-input:focus {
+  width: 200px;
+  border: solid 2px #56B383;
+  border-radius: 3px;
+  box-shadow: none !important;
+}
+
+/*input 的 placeholder 样式修改*/
+.ivu-input::-webkit-input-placeholder { /* WebKit browsers */
+  color: #999999;
+}
+
+.ivu-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #999999;
+}
+
+.ivu-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #999999;
+}
+
+.ivu-input:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #999999;
+}
+
+/*button 样式修改*/
+/*button.type = ghost*/
+.ivu-btn-ghost {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+.ivu-btn-ghost:hover {
+  color: #657180;
+  background-color: #D7D7D7;
+  border-color: #d7dde4;
+}
+
+/*表格 样式修改*/
+.ivu-table th{
+  height: 34px;
+}
+
+.ivu-table td{
+  height: 34px;
+}
+
+
+/*Modal 修改*/
+.ivu-modal-content {
+  border-radius: 0px;
+}
+.ivu-modal-header {
+  background-color: #2A2D2E;
+
+}
+
+.ivu-modal-header-inner {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ivu-modal-close i.ivu-icon-ios-close-empty {
+  color: #ffffff;
+  font-size: 35px;
+}
+
+.ivu-modal-close i.ivu-icon-ios-close-empty:hover {
+  color: #777777;
+}
+
+
+.ivu-modal-body {
+  min-height: 150px;
+}
+
+.ivu-modal-footer {
+  border-top: none;
+  padding: 12px 10px;
+}
+

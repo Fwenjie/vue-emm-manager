@@ -6,123 +6,118 @@
       <tab-list :tabList="tabs"></tab-list>
     </div>
     <div class="layout-content-main">
-          <input class="form-control col-lg-2  col-xs-2 developer-input"
-                 placeholder="输入标题查询">
-          <button type="button" @click="messageFunction(1,2,'')"
-                  class="btn col-lg-5 col-xs-5 btn-white btn-device-submit margin-left-thirteen">
-            查询
-          </button>
-          <a href="javascript:void (0)"
-             class="btn btn-white  margin-left-thirteen width-twenty-percentage col-lg-2 col-xs-2"
-             @click="changeShowModal('',$event,'message','')">添加新消息</a>
-        <div class="dataTables_paginate paging_bootstrap pagination  margin-right-thirteen"
-             style="margin-top: -15px;">
-          <ul>
-            <ul class="fl padding-top-seven ">共个</ul>
-            <li v-if="20 > 1"
-                class="prev background-color-white margin-left-seven">
-              <a class="btn btn-next-disable btn-forbidden next-page-left" href="javascript:void(0);"
-                 @click="nextPage(1,'message')"
-              ><
-                        </a>
-              <button class="btn btn-next-enable next-page-left"
-                      href="javascript:void(0);"
-                      @click="nextPage(1,'message')"
-              ><
-
-
-
-              </button>
-            </li>
-            <li v-if="20 > 1"
-                class="next background-color-white margin-left-seven">
-              <a
-                class="btn btn-next-disable btn-forbidden next-page-left" href="javascript:void(0);"
-                @click="nextPage(1,'message')"
-              >>
-                        </a>
-              <button class="btn btn-next-enable next-page-left"
-                      href="javascript:void(0);"
-                      @click="nextPage(1,'message')"
-              >>
-
-
-
-              </button>
-            </li>
-          </ul>
-        </div>
-      <div class="panel panel-default no-border applet-section-margin-top">
-        <div class=" panel-body no-border">
-          <table class="table table-bordered background-color-white  table-hover">
-            <tr class="table-head">
-              <td class="width-sixteen-percentage ">标题</td>
-              <td class="width-sixteen-percentage ">时间</td>
-              <td class="width-sixteen-percentage ">状态</td>
-              <td class="width-sixteen-percentage ">操作</td>
-            </tr>
-            <tr v-cloak>
-              <td class=""><a href="#" @click="messageFunction(8,item,'')"></a></td>
-              <td class=""></td>
-              <td class="state-enable"><span class="fa fa-circle "></span>已发布
-
-
-
-            </td>
-              <td class="state-disable"><span class="fa fa-circle "></span>未发布
-
-
-
-            </td>
-              <td><a href="javascript:void(0);"
-                     @click="changeShowModal(item,$event,'message','')">删除</a>
-              </td>
-              <td>
-                <a href="javascript:void(0);"
-                   @click="changeShowModal(item,$event,'message','')">编辑</a>
-                <a href="javascript:void(0);" class="margin-left-thirteen"
-                   @click="changeShowModal(item,$event,'message','')">发布</a>
-                <a href="javascript:void(0);" class="margin-left-thirteen"
-                   @click="changeShowModal(item,$event,'message','')">删除</a>
-              </td>
-            </tr>
-          </table>
-        </div>
+      <div class="layout-content-main-plugin">
+        <Input v-model="push.description" placeholder="消息描述" style="width: 200px;margin-right: 8px;margin-top: 20px"/>
+        <Input v-model="push.author" placeholder="发布者名称" style="width: 200px;margin-top: 20px;margin-right: 8px;"/>
+        <Button style="margin-top: 20px;margin-right: 8px" type="ghost" @click="search">查询</Button>
+        <pagination :style="paginationStyle" style="width: auto;margin-top: 20px;"></pagination>
+      </div>
+      <div class="layout-content-main-data">
+        <Table border :columns="table.columns" :data="table.data"></Table>
       </div>
     </div>
     <div class="layout-content-footer"></div>
+    <modal :showModal="true"></modal>
   </div>
 </template>
 
 <script>
   import TabList from '../components/tab/TabList.vue'
+  import Pagination from '../components/pagination/Pagination.vue'
+  import Modal from '../components/modal/Modal.vue'
   export default {
     name: 'push',
     data () {
       return {
         msg: '提示',
-        tabs: ['全部', 'Android', 'IOS']
+        tabs: ['全部', 'Android', 'IOS'],
+        push: {
+          description: '',
+          author: ''
+        },
+        table: {
+          columns: [
+            {
+              title: '消息描述',
+              key: '1',
+              width: '20%'
+            },
+            {
+              title: '目标用户',
+              key: '2',
+              width: '20%'
+            },
+            {
+              title: '平台',
+              key: '3'
+            },
+            {
+              title: '提交时间',
+              key: '4'
+            },
+            {
+              title: '总数',
+              key: '5'
+            },
+            {
+              title: '发送数',
+              key: '6'
+            },
+            {
+              title: '打开数',
+              key: '7'
+            },
+            {
+              title: '操作',
+              key: 'action',
+              render: (h, params) => {
+                return h('div', [
+                  h('a', {
+                    on: {
+                      click: () => {
+                        this.delete()
+                      }
+                    }
+                  }, '删除')
+                ])
+              }
+            }
+          ],
+          data: [
+            {
+              1: 3312312312312312321312312312312321312333,
+              2: 3333,
+              3: 3333,
+              4: 4444,
+              5: 4444,
+              6: 1000992,
+              7: 2222,
+              8: '删除'
+            }
+          ]
+        }
       }
     },
-    computed: {},
+    computed: {
+      paginationStyle () {
+        let width = window.innerWidth
+        if (width > 940) {
+          return 'float: right'
+        } else {
+          return ''
+        }
+      }
+    },
     components: {
-      TabList
+      TabList,
+      Pagination,
+      Modal
     },
     methods: {
-      aaa (ev) {
-        console.log(ev.currentTarget)
-        var n = 0
-        var id = setInterval(() => {
-          n++
-        }, 500)
-        ev.currentTarget.addEventListener('mouseup', () => {
-          clearInterval(id)
-          if (n < 10) {
-            console.log('你应该跳转')
-          } else {
-            console.log('看你怎么拖动了')
-          }
-        })
+      search () {
+      },
+      delete () {
+        this.$Modal.confirm({title: '提示', width: '800'})
       }
     }
   }
@@ -150,6 +145,23 @@
     margin: 0;
     overflow: hidden;
     background-color: #ffffff;
+  }
+
+  .layout-content-main-plugin {
+    width: 100%;
+    /*margin-top: 20px;*/
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .layout-content-main-data {
+    padding: 20px 15px;
+  }
+
+  .layout-content-main-data table th{
+    font-weight: 500;
+    background-color: #E4EAEC;
+    border-right: solid 1px #DDDDDD;
   }
 
   .layout-content-footer {
