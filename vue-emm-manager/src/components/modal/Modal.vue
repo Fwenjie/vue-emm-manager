@@ -3,9 +3,9 @@
     <Modal
       v-model="showModal"
       title="普通的Modal对话框标题"
-      @on-ok="ok"
+      @on-ok="ok()"
       @on-cancel="cancel"
-      :width="width"
+      :width="470"
     >
       <p>对话框内容</p>
       <p>对话框内容</p>
@@ -16,30 +16,42 @@
 
 <script>
   export default {
-    name: 'name',
+    name: 'modal',
     data () {
       return {
         msg: '提示'
       }
     },
-    props: {
-      type: {
-        type: String,
-        default () {
-          return 'tip'
-        }
+    props: [
+      'showModal',
+      'width'
+    ],
+//    props: {
+//      type: {
+//        type: String,
+//        default () {
+//          return 'tip'
+//        }
+//      },
+//      width: {
+//        type: String,
+//        default () {
+//          return '472'
+//        }
+//      },
+//      showModal: {
+//        type: Boolean,
+//        default () {
+//          return false
+//        }
+//      }
+//    },
+    methods: {
+      cancel () {
+        this.$emit('delete', null)
       },
-      width: {
-        type: String,
-        default () {
-          return '472'
-        }
-      },
-      showModal: {
-        type: Boolean,
-        default () {
-          return false
-        }
+      ok () {
+//        this.$emit('delete', null)
       }
     }
   }

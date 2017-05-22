@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="layout-content-footer"></div>
-    <modal :showModal="true"></modal>
+    <modal :showModal="showModal"></modal>
   </div>
 </template>
 
@@ -95,7 +95,8 @@
               8: '删除'
             }
           ]
-        }
+        },
+        showModal: true
       }
     },
     computed: {
