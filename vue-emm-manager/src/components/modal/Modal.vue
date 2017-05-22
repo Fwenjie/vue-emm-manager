@@ -32,7 +32,7 @@
       width: {
         type: String,
         default () {
-          return '520'
+          return '472'
         }
       },
       showModal: {

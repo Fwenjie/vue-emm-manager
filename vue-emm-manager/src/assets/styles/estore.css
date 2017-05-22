@@ -26,6 +26,26 @@ body {
   padding: 0;
 }
 
+/*label 标签*/
+
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+
+}
+
+.label-danger {
+  background-color: #FF615A;
+}
+
 /*rewrite*/
 
 /*子菜单字体颜色修改*/
@@ -157,3 +177,25 @@ body {
   padding: 12px 10px;
 }
 
+.ivu-modal-footer .ivu-btn-text {
+  border: solid 1px #DFE2E8;
+  border-radius: 0px;
+  margin-right: -5px;
+  font-size: 12px;
+}
+
+.ivu-modal-footer .ivu-btn-text:hover {
+  color: #657180;
+  background-color: #D7D7D7;
+  border-color: #d7dde4;
+}
+
+.ivu-modal-footer .ivu-btn-primary {
+  background-color: #57B382;
+  border-radius: 0px;
+  font-size: 12px;
+}
+
+.ivu-modal-footer .ivu-btn-primary:hover {
+  background-color: #4AA574;
+}

@@ -5,6 +5,7 @@
       <root url="file://$PROJECT_DIR$/dist/src/main.js" />
       <root url="file://$PROJECT_DIR$/dist/build/webpack.base.conf.js" />
     </CLASSES>
+    <JAVADOC />
     <SOURCES />
   </library>
 </component>
