@@ -1,26 +1,11 @@
 <component name="libraryTable">
   <library name="Generated files" type="javaScript">
-    <properties>
-      <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/dist/src/router/index.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/static/js/manifest.c810d6c092746f9874c3.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/assets/scripts/fun.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/static/js/app.89f8afcfa4d1d57aad46.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/assets/fun.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/main.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/static/js/vendor.3a397fa343a992a53917.js" />
-      </sourceFilesUrls>
-    </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/dist/src/router/index.js" />
-      <root url="file://$PROJECT_DIR$/dist/dist/static/js/manifest.c810d6c092746f9874c3.js" />
-      <root url="file://$PROJECT_DIR$/dist/src/assets/scripts/fun.js" />
-      <root url="file://$PROJECT_DIR$/dist/dist/static/js/app.89f8afcfa4d1d57aad46.js" />
-      <root url="file://$PROJECT_DIR$/dist/src/assets/fun.js" />
       <root url="file://$PROJECT_DIR$/dist/src/main.js" />
-      <root url="file://$PROJECT_DIR$/dist/dist/static/js/vendor.3a397fa343a992a53917.js" />
       <root url="file://$PROJECT_DIR$/dist/build/webpack.base.conf.js" />
     </CLASSES>
+    <JAVADOC />
     <SOURCES />
   </library>
 </component>

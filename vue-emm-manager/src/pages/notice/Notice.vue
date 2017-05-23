@@ -1,4 +1,4 @@
-<template>
+npm<template>
   <div class="layout-content">
     <div class="label label-danger">消息推送</div>
     <div class="layout-content-head"></div>
@@ -36,7 +36,7 @@
   import TabList from '../../components/tab/TabList.vue'
   import Pagination from '../../components/pagination/Pagination.vue'
   export default {
-    name: 'push',
+    name: 'notice',
     data () {
       return {
         msg: '提示',

@@ -9,19 +9,43 @@
     </Breadcrumb>
     <div class="layout-content-head "></div>
     <div class="layout-content-main">
-      <div style="min-height: 595px;display: inline-block;margin-top: 5px;width: 30%;margin-right: 0.1%;margin-left: 1%;background-color: #00c261"></div>
-      <div style="min-height: 595px;display: inline-block;margin-top: 5px;width: 67%;background-color: #00c261"></div>
+      <div style="vertical-align: top;min-height: 590px;display: inline-block;margin: 5px 0.1% 5px 0.8%;width: 30%;">
+        <Table></Table>
+      </div>
+      <div style="vertical-align: top;min-height: 590px;display: inline-block;margin: 5px 0;width: 68%;">
+        <Table></Table>
+      </div>
     </div>
     <div class="layout-content-footer"></div>
+    <Modal
+      v-model="modal.show"
+      :title="modal.title"
+      @on-ok="ensure"
+      @on-cancel="cancel">
+      <div style="height: inherit;" v-html="modal.body">
+
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'name',
+    name: 'noticeGroups',
     data () {
       return {
-        msg: '提示'
+        msg: '提示',
+        modal: {
+          show: false,
+          title: '提示',
+          body: ''
+        }
+      }
+    },
+    methods: {
+      ensure () {
+      },
+      cancel () {
       }
     }
   }
