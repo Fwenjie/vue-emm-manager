@@ -10,8 +10,8 @@
         <Input v-model="push.description" placeholder="消息描述" style="width: 200px;margin-right: 8px;margin-top: 20px"/>
         <!--<Input v-model="push.author" placeholder="发布者名称" style="width: 200px;margin-top: 20px;margin-right: 8px;"/>-->
         <Button style="margin-top: 20px;margin-right: 8px" type="ghost" @click="search">查询</Button>
-        <router-link to="/groups"><Button style="margin-top: 20px;margin-right: 8px" type="ghost" @click="search">用户组管理</Button></router-link>
-        <router-link to="/create"><Button style="margin-top: 20px;margin-right: 8px" type="ghost" @click="search">添加推送</Button></router-link>
+        <router-link to="/groups"><Button style="margin-top: 20px;margin-right: 8px" type="ghost" >用户组管理</Button></router-link>
+        <router-link to="/create"><Button style="margin-top: 20px;margin-right: 8px" type="ghost" >添加推送</Button></router-link>
 
         <pagination :style="paginationStyle" style="width: auto;margin-top: 20px;"></pagination>
       </div>
@@ -25,7 +25,7 @@
       :title="modal.title"
       @on-ok="ensure"
       @on-cancel="cancel">
-      <div style="height: inherit;" v-html="">
+      <div style="height: inherit;" v-html="modal.body">
 
       </div>
     </Modal>
@@ -132,8 +132,9 @@
     },
     methods: {
       search () {
-        this.showModal = true
-        console.log(this.showModal)
+        this.modal.show = true
+        this.modal.title = '删除确认'
+        this.modal.body = '<div style="vertical-align: middle">确定要删除编号为9527的用户吗?</div>'
       },
       delete () {
         this.$Modal.confirm({title: '提示', width: '800'})

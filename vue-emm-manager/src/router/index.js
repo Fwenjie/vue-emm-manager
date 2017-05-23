@@ -27,6 +27,7 @@ export default new Router({
       component: NoticeGroups,
       beforeEnter: (to, from, next) => {
         console.log(from['path'])
+        next()
       }
     }
   ]
