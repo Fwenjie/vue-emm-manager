@@ -49,10 +49,10 @@
         <Icon type="laptop" :size="iconSize"></Icon>
         <span class="layout-text">客户端管理</span>
       </Menu-item>
-      <Menu-item name="push" class="layout-left-menu-item " style="padding-left: 41px;background-color: #57B382;color: #ffffff">
+      <router-link to="/"><Menu-item name="push"  class="layout-left-menu-item " style="padding-left: 41px;background-color: #57B382;color: #ffffff">
         <Icon type="compose" :size="iconSize"></Icon>
-        <span class="layout-text">消息推送</span>
-      </Menu-item>
+        <span class="layout-text" >消息推送</span>
+      </Menu-item></router-link>
     </Menu>
   </div>
 </template>
@@ -74,9 +74,9 @@
       }
     },
     methods: {
-      'on-select' (name) {
-        console.log(name)
-//        window.location.href = url
+      select () {
+        console.log(1)
+        this.$router.push('/')
       }
     }
 

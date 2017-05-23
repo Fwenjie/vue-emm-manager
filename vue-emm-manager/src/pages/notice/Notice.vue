@@ -8,8 +8,11 @@
     <div class="layout-content-main">
       <div class="layout-content-main-plugin">
         <Input v-model="push.description" placeholder="消息描述" style="width: 200px;margin-right: 8px;margin-top: 20px"/>
-        <Input v-model="push.author" placeholder="发布者名称" style="width: 200px;margin-top: 20px;margin-right: 8px;"/>
+        <!--<Input v-model="push.author" placeholder="发布者名称" style="width: 200px;margin-top: 20px;margin-right: 8px;"/>-->
         <Button style="margin-top: 20px;margin-right: 8px" type="ghost" @click="search">查询</Button>
+        <router-link to="/groups"><Button style="margin-top: 20px;margin-right: 8px" type="ghost" @click="search">用户组管理</Button></router-link>
+        <router-link to="/create"><Button style="margin-top: 20px;margin-right: 8px" type="ghost" @click="search">添加推送</Button></router-link>
+
         <pagination :style="paginationStyle" style="width: auto;margin-top: 20px;"></pagination>
       </div>
       <div class="layout-content-main-data">
@@ -17,14 +20,21 @@
       </div>
     </div>
     <div class="layout-content-footer"></div>
-    <modal :showModal="showModal"></modal>
+    <Modal
+      v-model="modal.show"
+      :title="modal.title"
+      @on-ok="ensure"
+      @on-cancel="cancel">
+      <div style="height: inherit;" v-html="">
+
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script>
-  import TabList from '../components/tab/TabList.vue'
-  import Pagination from '../components/pagination/Pagination.vue'
-  import Modal from '../components/modal/Modal.vue'
+  import TabList from '../../components/tab/TabList.vue'
+  import Pagination from '../../components/pagination/Pagination.vue'
   export default {
     name: 'push',
     data () {
@@ -34,6 +44,11 @@
         push: {
           description: '',
           author: ''
+        },
+        modal: {
+          title: '提示',
+          show: false,
+          body: ''
         },
         table: {
           columns: [
@@ -68,35 +83,23 @@
               key: '7'
             },
             {
-              title: '操作',
-              key: 'action',
-              render: (h, params) => {
-                return h('div', [
-                  h('a', {
-                    on: {
-                      click: () => {
-                        this.delete()
-                      }
-                    }
-                  }, '删除')
-                ])
-              }
+              title: '发布者',
+              key: '8'
             }
           ],
           data: [
             {
-              1: 3312312312312312321312312312312321312333,
-              2: 3333,
-              3: 3333,
-              4: 4444,
-              5: 4444,
-              6: 1000992,
-              7: 2222,
-              8: '删除'
+              1: 'Android新版本升级提醒V2.0',
+              2: '所有人',
+              3: 'Android',
+              4: '2017-05-03 11:26:13',
+              5: '10',
+              6: '10',
+              7: '10',
+              8: '广州飞鱼公司'
             }
           ]
-        },
-        showModal: true
+        }
       }
     },
     computed: {
@@ -107,18 +110,39 @@
         } else {
           return ''
         }
+      },
+      role () {
+        return window.session.role
       }
     },
     components: {
       TabList,
-      Pagination,
-      Modal
+      Pagination
+    },
+    created () {
+      document.title = '消息推送'
+    },
+    mounted () {
+      let role = this.role
+      console.log(role)
+      if (role < 3 && role > 0) {
+
+      } else if (role === 3) {
+      }
     },
     methods: {
       search () {
+        this.showModal = true
+        console.log(this.showModal)
       },
       delete () {
         this.$Modal.confirm({title: '提示', width: '800'})
+      },
+      ensure () {
+
+      },
+      cancel () {
+
       }
     }
   }

@@ -134,6 +134,14 @@ body {
 }
 
 /*表格 样式修改*/
+.ivu-table {
+  height: auto;
+}
+
+.ivu-table table{
+  font-size: 12px;
+}
+
 .ivu-table th{
   height: 34px;
 }
